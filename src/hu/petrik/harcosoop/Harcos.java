@@ -23,7 +23,7 @@ public class Harcos {
         } else if (statuszSablon == 3) {
             this.alapEletero = 8;
             this.alapSebzes = 5;
-        }else {
+        } else {
             System.out.println("Hibás statuszSablon érték!");
         }
         this.eletero = alapEletero;
@@ -82,6 +82,27 @@ public class Harcos {
     }
 
     public void megkuzd(Harcos masikharcos) {
+        if (masikharcos.nev != this.nev) {
+            if (!(masikharcos.eletero == 0 || this.eletero == 0)) {
+                masikharcos.setEletero(masikharcos.getEletero() - this.getSebzes());
+                if (masikharcos.eletero > 0) {
+                    this.setEletero(this.getEletero() - masikharcos.getSebzes());
+                }
+                if (masikharcos.getEletero() > 0 && this.getEletero() > 0) {
+                    masikharcos.setTapasztalat(masikharcos.getTapasztalat() + 5);
+                    this.setTapasztalat(this.getTapasztalat() + 5);
+                }
+                if (masikharcos.getEletero() > 0 && this.getEletero()<1) {
+                    masikharcos.setTapasztalat(masikharcos.getTapasztalat() + 10);
+                } else if (this.getEletero() > 0 && masikharcos.getEletero() < 1) {
+                    this.setTapasztalat(this.getTapasztalat() + 10);
+                }
+            } else {
+                System.out.println("Az egyik harcos életereje 0");
+            }
+        } else {
+            System.out.println("A harcos nem harcolhat saját magával!");
+        }
     }
 
     public void gyogyul() {
@@ -89,6 +110,6 @@ public class Harcos {
 
     @Override
     public String toString() {
-        return "";
+        return String.format("%s - LVL: %s - EXP: %s / %s - HP:\n%s / %s - DMG: %s", nev, szint, tapasztalat, getSzintLepeshez(), eletero, getMaxEletero(), getSebzes());
     }
 }

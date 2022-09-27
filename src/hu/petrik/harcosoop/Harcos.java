@@ -104,9 +104,9 @@ public class Harcos {
                     this.setTapasztalat(this.getTapasztalat() + 5);
                 }
                 if (masikharcos.getEletero() > 0 && this.getEletero()<1) {
-                    masikharcos.setTapasztalat(masikharcos.getTapasztalat() + 10);
+                    masikharcos.setTapasztalat(masikharcos.getTapasztalat() + 15);
                 } else if (this.getEletero() > 0 && masikharcos.getEletero() < 1) {
-                    this.setTapasztalat(this.getTapasztalat() + 10);
+                    this.setTapasztalat(this.getTapasztalat() + 15);
                 }
             } else {
                 System.out.println("Az egyik harcos életereje 0");
@@ -126,6 +126,6 @@ public class Harcos {
 
     @Override
     public String toString() {
-        return String.format("%s - LVL: %s - EXP: %s / %s - HP:\n%s / %s - DMG: %s", nev, szint, tapasztalat, getSzintLepeshez(), eletero, getMaxEletero(), getSebzes());
+        return String.format("\n%s - LVL: %s - EXP: %s/%s HP:%s/%s - DMG: %s", nev, szint, tapasztalat, getSzintLepeshez(), eletero, getMaxEletero(), getSebzes());
     }
 }

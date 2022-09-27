@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24705d4e-5fbe-402f-b71d-344c63ba83b0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hu/petrik/harcosoop/Harcos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hu/petrik/harcosoop/Harcos.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -26,7 +26,7 @@ public class Harcos {
         } else {
             System.out.println("Hibás statuszSablon érték!");
         }
-        this.eletero = alapEletero;
+        this.eletero = this.getMaxEletero();
     }
 
     public String getNev() {
@@ -51,6 +51,11 @@ public class Harcos {
 
     public void setTapasztalat(int tapasztalat) {
         this.tapasztalat = tapasztalat;
+        if (this.tapasztalat >= this.getSzintLepeshez()){
+            this.setSzint(this.getSzint()+1);
+            this.setTapasztalat(this.getTapasztalat()-this.getSzintLepeshez());
+            this.setEletero(this.getMaxEletero());
+        }
     }
 
     public int getAlapEletero() {
@@ -67,6 +72,12 @@ public class Harcos {
 
     public void setEletero(int eletero) {
         this.eletero = eletero;
+        if (this.eletero < 1){
+            this.setTapasztalat(0);
+        }
+        if (this.eletero > this.getMaxEletero()){
+            this.eletero = this.getMaxEletero();
+        }
     }
 
     public int getSebzes() {
@@ -82,7 +93,7 @@ public class Harcos {
     }
 
     public void megkuzd(Harcos masikharcos) {
-        if (masikharcos.nev != this.nev) {
+        if (!masikharcos.nev.equals(this.nev)) {
             if (!(masikharcos.eletero == 0 || this.eletero == 0)) {
                 masikharcos.setEletero(masikharcos.getEletero() - this.getSebzes());
                 if (masikharcos.eletero > 0) {
@@ -106,6 +117,11 @@ public class Harcos {
     }
 
     public void gyogyul() {
+        if (this.eletero < 1){
+            this.setEletero(this.getMaxEletero());
+        } else {
+            this.setEletero(this.getMaxEletero()+(szint+3));
+        }
     }
 
     @Override

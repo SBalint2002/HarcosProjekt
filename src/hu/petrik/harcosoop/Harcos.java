@@ -52,9 +52,10 @@ public class Harcos {
     public void setTapasztalat(int tapasztalat) {
         this.tapasztalat = tapasztalat;
         if (this.tapasztalat >= this.getSzintLepeshez()){
+            this.setTapasztalat(this.getTapasztalat()-getSzintLepeshez());
             this.setSzint(this.getSzint()+1);
-            this.setTapasztalat(this.getTapasztalat()-this.getSzintLepeshez());
             this.setEletero(this.getMaxEletero());
+            System.out.println("\nSzintlépés!");
         }
     }
 
@@ -74,6 +75,9 @@ public class Harcos {
         this.eletero = eletero;
         if (this.eletero < 1){
             this.setTapasztalat(0);
+            this.setSzint(0);
+            this.eletero = 0;
+            System.out.println("\nHarcos meghalt!");
         }
         if (this.eletero > this.getMaxEletero()){
             this.eletero = this.getMaxEletero();
@@ -112,16 +116,17 @@ public class Harcos {
                 System.out.println("Az egyik harcos életereje 0");
             }
         } else {
-            System.out.println("A harcos nem harcolhat saját magával!");
+            System.out.println("\nA harcos nem harcolhat saját magával!");
         }
     }
 
     public void gyogyul() {
-        if (this.eletero < 1){
-            this.setEletero(this.getMaxEletero());
+        if (this.eletero == 0){
+            setEletero(getMaxEletero());
         } else {
-            this.setEletero(this.getMaxEletero()+(szint+3));
+            setEletero(getMaxEletero()+(szint+3));
         }
+        System.out.println("\nÉleterő feltöltve!");
     }
 
     @Override
